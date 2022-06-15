@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1635498426 source:c:\cbprojects\lista2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1635938899 source:c:\cbprojects\lista2\zad1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,0 +1,155 @@
+//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>//Dominik Kiełbowicz, 329595, lista 7 zadanie 2
+#include <stdio.h>
+#include <stdlib.h>

@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1646588230 source:c:\cbprojects\2\ulamek.c
+	<stdio.h>
+	<stdlib.h>
+
+1646588304 source:c:\cbprojects\2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ulamek.h"
+
+1646588342 c:\cbprojects\2\ulamek.h
+
+1646838649 source:c:\cbprojects\obiektowe\lista1\2\ulamek.c
+	<stdio.h>
+	<stdlib.h>
+
+1646839297 source:c:\cbprojects\obiektowe\lista1\2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ulamek.h"
+
+1646588342 c:\cbprojects\obiektowe\lista1\2\ulamek.h
+

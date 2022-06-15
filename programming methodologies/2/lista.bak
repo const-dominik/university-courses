@@ -1,0 +1,19 @@
+#lang racket
+
+
+;zad 1
+(define (fib n)
+  (cond
+    [(= n 0) 0]
+    [(= n 1) 1]
+    [else (+ (fib (- n 1)) (fib (- n 2)))])
+  )
+
+(define (fib-iter n)
+  (define (iter n prev1 prev2)
+    (if (= n 0)
+        prev1
+        (iter (- n 1) prev2 (+ prev1 prev2))))
+  (iter n 0 1))
+;rekurencja wolniejsza - przy kazdym wywolaniu na stack zostaje dodane kolejne dwa wywolania
+;

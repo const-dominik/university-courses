@@ -1,0 +1,14 @@
+#lang plait
+
+; raco pkg install plait
+
+#|
+('a 'b - > 'a )
+(('a 'b - > 'c ) ('a - > 'b ) 'a - > 'c )
+((( 'a - > 'a ) - > 'a ) - > 'a )
+(('a - > 'b ) ('a - > 'c ) - > ('a - > ('b * 'c ) ) )
+(('a - > ( Optionof ('a * 'b ) ) ) 'a - > ( Listof 'b ) )
+|#
+
+(define (ab2a a b) a)
+;(define (bb 

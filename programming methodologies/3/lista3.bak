@@ -1,0 +1,36 @@
+#lang racket
+
+
+;zad1
+;'(( car ( a . b ) ) (* 2) )
+(list (list 'car (cons 'a 'b)) (list '* 2))
+;‘ ( ,( car '( a . b ) ) ,(* 2) )
+(list 'a 2)
+;'((+ 1 2 3) ( cons ) ( cons a b ) )
+(list (list '+ 1 2 3) (list 'cons) (list 'cons 'a 'b))
+
+
+;zad2
+(define (product xs)
+    (foldl * 1 xs))
+
+
+;zad3
+;(( lambda (x y)  (+ x (* x y ))) 1 2) ->  (( lambda (x y)  (+ 1 (* x y ))) 1 2) -> (( lambda (x y)  (+ 1 (* 1 2 ))) 1 2) -> (( lambda (x y)  (+ 1 2)) 1 2) (( lambda (x y) 3) 1 2)
+
+
+;zad5
+(define (negatives n)
+  (build-list n (lambda (x) (* -1 (+ x 1)))))
+
+(define (reciprocals n)
+  (build-list n (lambda (x) (/ 1 (+ x 1)))))
+
+(define (evens n)
+  (build-list n (lambda (x) (* x 2))))
+
+(define (identityM n)
+  (build-list n
+              (lambda (x)
+                  (build-list n
+                              (lambda (y) (if (= x y) 1 0))))))

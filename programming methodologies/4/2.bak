@@ -1,0 +1,81 @@
+#lang racket
+
+(require rackunit)
+
+(define-struct leaf () #:transparent)
+(define-struct node (l elem r) #:transparent)
+
+(define (tree? x)
+  (cond [(leaf? x) #t]
+        [(node? x) (and (tree? (node-l x)) (tree? (node-r x)))]
+        [else #f]))
+
+(define example-tree (node (node (leaf) 1 (leaf))
+                           2
+                           (node (node (leaf) 3 (leaf))
+                                 4
+                                 (node (leaf) 5 (leaf)))))
+
+(define example-treev2 (node (node (leaf) 1 (leaf))
+                           2
+                           (node (node (leaf) 3 (leaf))
+                                 4
+                                 (node (leaf) 5 (node (leaf) 7 (node (leaf) 8 (leaf)))))))
+
+(define (find-bst x t)
+  (cond [(leaf? t) #f]
+        [(node? t)
+         (cond [(= x (node-elem t)) #t]
+               [(< x (node-elem t))
+                (find-bst x (node-l t))]
+               [else
+                (find-bst x (node-r t))])]))
+
+(define (insert-bst x t)
+  (cond [(leaf? t) (node (leaf) x (leaf))]
+        [(node? t)
+         (cond [(= x (node-elem t)) t]
+               [(< x (node-elem t))
+                (node
+                 (insert-bst x (node-l t))
+                 (node-elem t)
+                 (node-r t))]
+               [else
+                (node
+                 (node-l t)
+                 (node-elem t)
+                 (insert-bst x (node-r t)))])]))
+
+;zad2
+
+(define (fold-tree proc x tree)
+  (if (leaf? tree)
+      x
+      (proc (node-elem tree) (fold-tree proc x (node-l tree)) (fold-tree proc x (node-r tree)))))
+
+(define (tree-sum t)
+  (fold-tree + 0 t))
+
+(define (tree-flip t)
+  (fold-tree
+   (lambda (elem left right) (node right elem left))
+    (leaf)
+    t))
+
+(define (tree-height t)
+  (fold-tree
+   (lambda (elem left right) (+ 1 (max left right)))
+   0
+   t))
+
+(define (tree-span t)
+  (fold-tree
+   (lambda (elem left right) (cons (min (car left) elem) (max elem (cdr right))))
+   (cons +inf.0 -inf.0)
+   t))
+
+(define (flatten t)
+  (fold-tree
+   (lambda (elem left right) (append left (cons elem right)))
+   null
+   t))

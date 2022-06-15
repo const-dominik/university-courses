@@ -1,0 +1,6 @@
+#lang plait
+( curry compose )
+(( curry compose ) ( curry compose ) )
+(( curry compose ) ( curry apply ) )
+(( curry apply ) ( curry compose ) )
+( compose curry flip )

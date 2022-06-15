@@ -1,0 +1,12 @@
+#lang plait
+;zad2
+;( define ( apply f x ) ( f x ) ) ;(('a -> 'b) 'a -> 'b)
+;przyjmuje f i x, x typu 'a jest aplikowalny do f więc f przyjmuje 'a i zwraca jakieś 'b, które tez jest wynikiem całej funkcji
+( define ( compose f g ) ( lambda ( x ) ( f ( g x ) ) ) ) ; (('a -> 'b) ('c -> 'a) -> ('c -> 'b))
+;x jest typu 'c, jest aplikowalny do g więc g przyjmuje 'c, wynik jest aplikowalny do f więc f przyjmuje to co zwraca g
+;g zwraca coś ('b), więc wynikiem całej funkcji jest ('c -> 'b)
+( define ( flip f ) ( lambda ( x y ) ( f y x ) ) ) ;(('a 'b -> 'c) -> ('b 'a -> 'c))
+;lambda przyjmuje dwa argumenty x ('b) i y ('a), sa aplikowalne do f więc f przyjmuje 'a 'b i zwraca coś ('c), lambda zwraca to samo ('c)
+( define ( curry f ) ( lambda ( x ) ( lambda ( y ) ( f x y ) ) ) ) ;(('a 'b -> 'c) -> ('a -> ('b -> 'c)))
+; zwraca lambde przyjmujaca x ('a) i zwracającą lambdę przyjmującą y ('b), aplikuje te dwa argumenty do f, więc f przyjmuje 'a 'b,
+; f zwraca coś ('c) i to zwraca wewnetrzna lambda

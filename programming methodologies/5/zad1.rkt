@@ -1,0 +1,16 @@
+#lang plait
+
+#|
+('a 'b - > 'a )
+(('a 'b - > 'c ) ('a - > 'b ) 'a - > 'c )
+((( 'a - > 'a ) - > 'a ) - > 'a )
+(('a - > 'b ) ('a - > 'c ) - > ('a - > ('b * 'c ) ) )
+(('a - > ( Optionof ('a * 'b ) ) ) 'a - > ( Listof 'b ) )
+|#
+
+;zad1
+(define (1a a b) a)
+(define (1b f g a) (f a (g a)))
+(define (1c [f : (('a -> 'a) -> 'a)]) (f (lambda (x) x)))
+(define (1d f g) (lambda (x) (pair (f x) (g x))))
+(define (1e [f : ('a -> (Optionof ('a * 'b)))] [a : 'a]) (cons (snd (some-v (f a))) empty))

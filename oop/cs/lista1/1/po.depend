@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1646584444 source:c:\cbprojects\po\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1646588486 source:c:\cbprojects\po\figura.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1646838053 source:c:\cbprojects\obiektowe\lista1\1\figura.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1646837977 source:c:\cbprojects\obiektowe\lista1\1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"figura.h"
+
+1646837126 c:\cbprojects\obiektowe\lista1\1\figura.h
+
