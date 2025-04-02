@@ -1,0 +1,27 @@
+x = a*a*a + 4*a*a*b + 4*a*b*b + b*b*b
+
+t1 := a * a
+t2 := t1 * 4
+t2 := t2 * b
+t1 := t1 * a
+t1 := t1 + t2
+t2 := b * b
+t2 := t2 * 4
+t2 := t2 * a
+t1 := t1 + t2
+t2 := b * b
+t2 := t2 * b
+t1 := t1 + t2
+
+t1 := a * a
+mem[0] := t1 * 4
+mem[0] := mem[0] * b
+t1 := t1 * a
+t1 := t1 + mem[0]
+mem[0] := b * b
+mem[0] := mem[0] * 4
+mem[0] := mem[0] * a
+t1 := t1 + mem[0]
+mem[0] := b * b
+mem[0] := mem[0] * b
+t1 := t1 + mem[0]

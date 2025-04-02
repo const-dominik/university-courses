@@ -1,0 +1,27 @@
+![](https://i.imgur.com/yDjzgWA.png)
+
+Procesory architektury x86-64 używają czteropoziomowej tablicy stron. Tablice wyższych poziomów zawierają wpisy przekierowujące do tablic niższych poziomów. Używamy 48-bitowych adresy wirtualnych, z czego 36-bitów to VPN i 12-bitów to VPO.
+VPO przesyłamy jako PPO, VPN jest dzielony na 32-bitowe TLBT i 4-bitowe TLBI i przesyłane jako adres do czterodrożnego TLB z 16 zbiorami. W przypadku hita dostajemy PPN, które w połączeniu z PPO (=VPO) tworzą pełny PA (Physical Address).
+W przypadku missa VPN jest dzielony na 4 części po 9 bitów. Każda z tych części tworzy VPN do kolejnej tablicy. PTE 1-3:
+
+![](https://i.imgur.com/5pJpXnH.png)
+
+Significant fields:
+P: Czy tablica niższego poziomu jest dostępna w pamięci.
+R/W: Opisuje permisje dostępu do stron (readonly, read/write)
+U/S: Opisuje wymagany poziom permisji do stron w danym regionie (user/supervisor-kernel)
+WT: Polityka zapisu (write-trhough, write-back)
+A: reference bit - ustawiany żeby odróżnić strony często używane od rzadko używanych, potrzebny w algorytmach wymiany (lista 12)
+PS:  Page size either 4 KB or 4 MB (defined for Level 1 PTEs only).
+PS: page size (4KB/4MB, tylko na 1 lvlu)
+Page table physical base address: 40 najbardziej znaczących bitów adresu strony w tablicy niższego poziomu
+XD: execute disable, może być użyty do wyłączenia pobierania instrukcji z poszczególnych stron pamięci
+
+PTE 4:
+
+![](https://i.imgur.com/m3l9irG.png)
+
+D: Dirty bit
+G: określa czy wyrzucić stronę z TLB w przypadku zmiany obecnego zadania w procesie
+
+Przewagą tablicy czteropoziomowej nad jednopoziomową jest duża oszczędność pamięci. Jeśli adres w tablicy wyższego poziomu nie jest określony, to nie ma konieczności rezerwowania pamięci dla tablic niższych poziomów.

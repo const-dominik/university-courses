@@ -1,0 +1,53 @@
+1)
+
+Grupujemy procesy względem priorytety, a następnie kożystamy z Round Robin na procesach o tych samych priorytetach,
+zaczynamy od procesów z największym priorytetem. Jeśli tylko jeden proces ma dany priorytet, to po dojściu do niego
+wykonujemy go w całości
+
+Round Robin - każdy proces dostaje dostę do procesora na określony kwant czasu, jeśli proces w danym czasie się 
+nie zakończy, scheduler przyznaje dostęp do procesora innemu procesowi, też na kwant czasu. Procesą dostęp do 
+procesora przyznaje się "w kółko"
+
+
+2)
+
+a)
+Q = inf
+brak korzyści z Round Robin, przy takim Q każdy zaczęty proces będzie trwał dopuki się nie wykonana,
+czyli algorytm w praktyce zmienia się na FCFS
+
+efektywność: T / (T+S)
+niska interaktywność
+
+
+b)
+Q > T
+prawie żadnych korzyści z Round Robin, wiekszość procesów po rozpoczęciu od razu się wykonakona, tak więc
+przez większość czasu algorytm działa jak FCFS
+
+efektywność: około T / (T+S)
+niska interaktywność
+
+
+c)
+S < Q < T
+optymalnie dobrane Q
+
+efektywność: Q / (Q+S)
+duża interaktywność
+
+
+d)
+Q = S
+Z takim Q połowę dostępnego czasu zajmuje zmienianie kontekstu
+
+efektywność: Q / (Q+S) = 1/2 (niska)
+teoretycznie większa inteaktywność niż w C, ale czas wykonania procesu się bardzo wydłuża
+
+
+e)
+Q bliskie 0
+Zdecydaną wiekszość czasu przenaczamy na zmiany konteksku, w zasadzie to prawie nic nie robimy
+
+efektywność: bardzo niska
+inteaktywność: ¯\_(ツ)_/¯

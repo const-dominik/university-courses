@@ -1,0 +1,213 @@
+z1:
+we downloaded server and run it, command shell is in compas, we can see our dbs using `show dbs`
+we can run app from lecture using dotnet run MongoDBClient.csproj, before that we need to create database library
+to add some data to the table, we can use `db.authors.insertOne` - not .save
+after adding data (commands are in script, commented out) our script will console log the authors
+
+z2:
+tables:
+czytelnik - reader
+egzemplarz - copy
+ksiazka - book
+wypozyczenie - borrowings
+
+structure:
+book is in library. we can have several copies of the book
+we also have readers, and they have borrowings of copies
+
+db.books.insertMany([
+  {
+    isbn: "978-0-123456-78-9",
+    title: "The Art of Programming",
+    author: "John Coder",
+    release_year: 2020,
+    price: 35.99,
+    copies: [
+      { signature: 101 },
+      { signature: 102 }
+    ]
+  },
+  {
+    isbn: "978-1-234567-89-0",
+    title: "Data Science Essentials",
+    author: "Jane Analyst",
+    release_year: 2021,
+    price: 49.99,
+    copies: [
+      { signature: 201 },
+      { signature: 202 }
+    ]
+  }
+])
+
+db.readers.insertMany([
+    {
+        pesel: "0101250120",
+        surname: "coder",
+        city: "wroclaw",
+        birthyear: 1992,
+        borrowings: [
+            { signature: 201, borrow_date: "28.11.2023", borrowed_days: 14 }
+        ]
+    },
+    {
+        pesel: "2352353212",
+        surname: "analyst",
+        city: "wroclaw",
+        birthyear: 1991,
+        borrowings: [
+            { signature: 101, borrow_date: "28.11.2023", borrowed_days: 14 },
+            { signature: 102, borrow_date: "14.11.2023", borrowed_days: 30 }
+        ]
+    }
+])
+
+we can omit _id if we don't need it - mongo will generate a unique, identifying ID Object for us
+
+z3:
+add this to validation of collection in mongo compass:
+book:
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'isbn',
+      'title',
+      'author',
+      'release_year',
+      'price',
+      'copies'
+    ],
+    properties: {
+      isbn: {
+        bsonType: 'string',
+        description: 'ISBN has to be string and is required in object.'
+      },
+      title: {
+        bsonType: 'string',
+        description: 'Title has to be string and is required in object.'
+      },
+      author: {
+        bsonType: 'string',
+        description: 'Author has to be string and is required in object.'
+      },
+      release_year: {
+        bsonType: 'int',
+        description: 'Release year must be an integer'
+      },
+      price: {
+        bsonType: 'double',
+        minimum: 0,
+        description: 'Price have to be a positive number'
+      },
+      copies: {
+        bsonType: 'array',
+        description: 'Copies must be an array',
+        items: {
+          bsonType: 'object',
+          required: [
+            'signature'
+          ],
+          properties: {
+            signature: {
+              bsonType: 'int',
+              description: 'Signature has to be an integer'
+            }
+          }
+        }
+      }
+    }
+  }
+}
+readers:
+$jsonSchema: {
+      bsonType: "object",
+      required: ["pesel", "surname", "city", "birthyear", "borrowings"],
+      properties: {
+        pesel: {
+          bsonType: "string",
+          description: "PESEL must be a string and 11 characters long",
+          minLength: 11,
+          maxLength: 11
+        },
+        surname: {
+          bsonType: "string",
+          description: "Surname must be a string"
+        },
+        city: {
+          bsonType: "string",
+          description: "City must be a string"
+        },
+        birthyear: {
+          bsonType: "int",
+          minimum: 1900,
+          maximum: 2100,
+          description: "Birth year must be an integer between 1900 and 2100"
+        },
+        borrowings: {
+          bsonType: "array",
+          description: "Borrowings must be an array of objects",
+          items: {
+            bsonType: "object",
+            required: ["signature", "borrow_date", "borrowed_days"],
+            properties: {
+              signature: {
+                bsonType: "int",
+                description: "Signature must be an integer"
+              },
+              borrow_date: {
+                bsonType: "string",
+                pattern: "^\\d{2}\\.\\d{2}\\.\\d{4}$",
+                description: "Borrow date must be a string in the format DD.MM.YYYY"
+              },
+              borrowed_days: {
+                bsonType: "int",
+                minimum: 1,
+                description: "Borrowed days must be an integer greater than or equal to 1"
+              }
+            }
+          }
+        }
+      }
+    }
+
+const logEntries = db.adminCommand({ getLog: 'global' });
+const log = logEntries.log.find(log => JSON.parse(log).id === 5363500);
+console.log(JSON.parse(log).attr.reason.errInfo.details.schemaRulesNotSatisfied);
+
+z4:
+
+1:
+const totalDocuments = db.books.countDocuments();
+console.log("total: ", totalDocuments);
+console.log("just sorted: ", db.books.find().sort({ release_year: 1 }));
+console.log("middle two: ", db.books.find().sort({ release_year: 1 }).skip(Math.floor(totalDocuments / 2)-1).limit(2));
+
+2:
+const filteredDocuments = db.readers.find({
+  "borrowings.borrowed_days": { $gt: 14 }
+});
+
+filteredDocuments.forEach(doc => printjson(doc));
+
+z7:
+const result = db.readers.aggregate([
+  {
+    $group: {
+      _id: "$city",
+      totalReaders: { $sum: 1 } //for each reader in city, add 1
+    }
+  },
+  {
+    $project: {
+      _id: 0, // dont include _id in response
+      city: "$_id", // include city as _id - in practice, renaming _id field to city
+      totalReaders: 1 // include this field in response
+    }
+  },
+  {
+    $sort: { city: 1 }
+  }
+]);
+
+result.forEach(doc => printjson(doc));

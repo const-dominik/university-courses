@@ -1,0 +1,20 @@
+10.10.0.0/16
+
+Chcemy 5 rozłącznych podsieci. Potrzebujemy zatem ustawić początkowe bity w 5 różnych sekwencji, do czego potrzebujemy 3 bity.
+(000, 001, 010, 011, 100)
+
+Mamy zatem: 
+10.10.0.0/19
+10.10.32.0/19
+10.10.64.0/19
+10.10.96.0/19
+10.10.128.0/17 -> Chcemy objąć wszystkie adresy, więc musimy wziąć pod uwagę też adresy 101, 110 itd, stąd mniejsza maska
+
+Liczba adresów się zmniejszyła, bo potrzebujemy zużyć adresy na adresy sieci oraz rozgłoszeniowe.
+Najmniejsza możliwa podsieć w utworzonych podsieciach to 1 adres. 
+Najmniejsza możliwa podsieć przy rozdziale na 5 rozłącznych podsieci pokrywających wszystkie adresy:
+(1, 01, 001, 0001, 0000)
+
+
+10.10.0.0/20
+W tej sieci mamy 2^12 adresów.

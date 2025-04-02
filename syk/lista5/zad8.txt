@@ -1,0 +1,56 @@
+FOR I := 1 TO n - 1 DO
+    FOR J := I TO 1 DO
+        IF A[J] > A[J+1] THEN
+        BEGIN
+            Temp := A[J]
+            A[J] := A[J + 1]
+            A[J + 1] := Temp
+        END
+    DONE
+DONE
+
+Lecture:
+I := 1 ; <<B1>>
+goto ITest
+ILoop: J := I ; <<B2>>
+goto JTest
+JLoop: t1 := 4 * J ; <<B3>>
+t2 := A[t1] ; A[J]
+t3 := J + 1
+t4 := 4 * t3
+t5 := A[t4] ; A[J + 1]
+if t2 <= t5 goto JPlus
+t6 := 4 * J ; <<B4>>
+Temp := A[t6] ; Temp := A[J]
+t7 := J + 1
+t8 := 4 * t7
+t9 := A[t8] ; A[J + 1]
+t10 := 4 * J
+A[t10] := t9 ; A[J] := A[J + 1]
+t11 := J + 1
+t12 := 4 * t11
+A[t12] := Temp ; A [J + 1] := Temp
+JPlus: J := J + 1 ; <<B5>>
+JTest: if J >= 1 goto JLoop ; <<B6>>
+IPlus: I := I + 1 ; <<B7>>
+ITest: t13 := n - 1
+if I <= t13 goto ILoop ; <<B8>>
+
+more optimal?
+I := 1
+t13 := n - 1
+goto ITest
+ILoop: J := 1
+goto JTest
+JLoop: t1 := 4 * J
+t2 := A[t1]
+t3 := J + 1
+t4 := 4 * t3
+t5 := A[t4]
+if t2 <= t5 goto JPlus
+A[t1] := t5
+A[t4] := t2
+JPlus: J := J + 1
+JTest: if J <= I goto JLoop
+IPlus: I := I + 1
+ITest: if I <= t13 goto ILoop

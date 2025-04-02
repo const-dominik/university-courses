@@ -1,0 +1,88 @@
+1.
+CREATE
+  (charlie:Person {name: 'Charlie Sheen'}),
+  (martin:Person {name: 'Martin Sheen'}),
+  (michael:Person {name: 'Michael Douglas'}),
+  (oliver:Person {name: 'Oliver Stone'}),
+  (rob:Person {name: 'Rob Reiner'}),
+  (wallStreet:Movie {title: 'Wall Street'}),
+  (charlie)-[:ACTED_IN {role: 'Bud Fox'}]->(wallStreet),
+  (martin)-[:ACTED_IN {role: 'Carl Fox'}]->(wallStreet),
+  (michael)-[:ACTED_IN {role: 'Gordon Gekko'}]->(wallStreet),
+  (oliver)-[:DIRECTED]->(wallStreet),
+  (thePresident:Movie {title: 'The American President'}),
+  (martin)-[:ACTED_IN {role: 'A.J. MacInerney'}]->(thePresident),
+  (michael)-[:ACTED_IN {role: 'President Andrew Shepherd'}]->(thePresident),
+  (rob)-[:DIRECTED]->(thePresident),
+  (martin)-[:FATHER_OF]->(charlie)
+
+2.
+//create 2 new
+CREATE
+  (jennifer: Person {name: 'Jennifer Coolidge'}),
+  (henry: Person {name: 'Henry Cavill'}),
+  (legallyBlonde: Movie {title: 'Legally Blonde'}),
+  (batman: Movie {title: 'Batman'})
+
+//set 2 properties
+MATCH (legallyBlonde {title: 'Legally Blonde'})
+SET
+  legallyBlonde.release_year = 2001,
+  legallyBlonde.rating = 10
+
+//add relationship
+MATCH (legallyBlonde {title: 'Legally Blonde'}),
+  (jennifer {name: 'Jennifer Coolidge'})
+CREATE
+  (jennifer)-[:ACTED_IN {role: 'Paulette'}]->(legallyBlonde)
+
+MATCH (batman {title: 'Batman'}),
+  (henry {name: 'Henry Cavill'})
+CREATE
+  (henry)-[:ACTED_IN {role: 'Batman'}]->(batman)
+
+//update property
+MATCH (legallyBlonde {title: 'Legally Blonde'})
+SET
+  legallyBlonde.rating = 9.9
+
+//delete relation
+MATCH (henry {name: 'Henry Cavill'})-[r:ACTED_IN]->(Movie {title: 'Batman'})
+DELETE r
+
+3.
+• return the movies where person A acted in,
+MATCH (person:Person {name: 'Oliver Stone'})-[:ACTED_IN]->(movie)
+RETURN movie
+
+• return the movies where person A was both the actor and the director,
+MATCH (person {name: 'Oliver Stone'}), (movie {title: 'Wall Street'})
+CREATE
+  (person)-[:ACTED_IN]->(movie)
+
+MATCH (person:Person {name: 'Oliver Stone'})-[:ACTED_IN]->(movie)<-[:DIRECTED]-(person)
+RETURN movie
+
+• return actors who didn’t play in any movie,
+MATCH (actor:Person)
+WHERE NOT (actor)-[:ACTED_IN]->()
+RETURN actor
+
+• return actors who played in more than 2 movies,
+
+MATCH (person {name: 'Oliver Stone'}), 
+  (movie {title: 'Legally Blonde'})
+CREATE
+  (person)-[:ACTED_IN]->(movie)
+
+MATCH (actor:Person)-[:ACTED_IN]->(movie)
+WITH actor, COUNT(movie) AS moviesPlayed
+WHERE moviesPlayed >= 2
+RETURN actor
+
+• return movies with the larger number of actors.
+MATCH (movie:Movie)<-[:ACTED_IN]-(actor)
+WITH movie, COUNT(actor) AS numberOfActors
+ORDER BY numberOfActors DESC
+RETURN movie
+LIMIT 3

@@ -1,0 +1,51 @@
+a) optymalny
+
+Optymalny algorytm polega na usunięciu strony, która będzie nam najpóźniej potrzebna. Realnie jest to niemożliwe do zaimplementowania - nie wiemy, których stron będą potrzebowały przyszłe instrukcje. Jest przydatny do porównywania innych algorytmów z najoptymalniejszym.
+
+Wsparcie ze strony sprzętu:
+nie istnieje taki sprzęt
+
+b) NRU
+
+Wykorzystuje bit R i M - referenced i modified. Na podstawie ich wartości dzielimy strony na 4 klasy:
+klasa 0 - R 0, M 0
+klasa 1 - R 0, M 1 (:O)
+klasa 2 - R 1, M 0
+klasa 3 - R 1, M 1
+
+Klasa 1 jest możliwa, bo bit R jest cyklicznie czyszczony, aby odróżnić strony niedawno używane od dawno używanych - taka operacja na stronie 3 klasy powoduje powstanie strony 1 klasy. NRU wybiera losowo stronę z niepustej klasy z najniższym numerem. Założeniem tego algorytmu jest usunięcie strony, która jest najrzadziej używana, jednak bez zapisywania dokładnie kiedy była ona ostatnio użyta. Różnica między LRU to mniej zużytej pamięci za mniej optymalny wybór strony do wyrzucenia.
+
+Wsparcie ze strony sprzętu:
+wymaga bitów R i M, a także mechanizmu resetowania bitu R, do którego wykorzystywany jest zegar systemowy
+
+c) FIFO
+
+Kolejka. Usuwamy stronę która została zapisana najdawniej. Prosta implementacja, małe użycie pamięci, jednak kompletnie nieoptymalne (zobaczymy to w zadaniu 3) - strona którą wyrzucamy, może być nawet najczęściej używaną stroną.
+
+Wsparcie ze strony sprzętu:
+nie wymaga użycia bitów R i M, jest bardzo prosty w implementacji - wystarczy lista wiązana
+
+d) algorytm drugiej szansy
+
+Modyfikacja FIFO. Jeśli najdawniej zapisana strona nie jest rzadko używana (bit R = 1), to przenosimy ją na początek listy wiązanej tak jakby została świeżo załadowana do pamięci. Przy tym ustawiamy bit R na 0, co zapobiega sytuacji gdzie wszystkie elementy naszej listy wiązanej mają R = 1, więc przy próbie wyrzucenia elementu wchodzilibyśmy w wieczną pętlę.
+
+Wsparcie ze strony sprzętu:
+potrzebny bit R, potrzeba listy wiązanej
+
+e) clock
+
+Modyfikacja algorytmu drugiej szansy. Tam przy przeniesieniu elementu z końca na początek musimy usunąć element z początku listy, dodać go na koniec i tak w kółko. Algorytm zegarka radzi sobie z tym tak, że mamy listę cykliczną - wskaźnik ("wskazówka" zegara) wskazuje na najstarszą stronę. Przy page fault sprawdzamy stronę wskazywaną przez wskazówkę - jeśli bit R = 0, to usuwamy tę stronę. W przeciwnym przypadku bit R jest resetowany, a "wskazówkę" przestawiamy na kolejną "godzinę".
+
+![](https://i.imgur.com/rkFXBYB.png)
+
+Wsparcie ze strony sprzętu:
+wymaga bitu R i wskaźnika ("wskazówki") na najstarszą stronę listy cyklicznej.
+
+f) LRU
+
+Najoptymalniejszy, jednak kosztem dużej pamięci. Usuwa stronę, która była najdłużej nieużywana.
+
+Wsparcie ze strony sprzętu:
+musimy
+    - albo trzymać listę wszystkich stron w pamięci (od najrzadszej do najczęstszej strony) i ciągle ją aktualizować,
+    - albo używając licznika, do czego potrzebujemy wyposażyć sprzęt w 64-bitowy licznik C, który jest aktualizowany po każdej instrukcji. Co więcej, każdy wpis w tabeli wymaga miejsca na tyle dużego, by przechować licznik C.

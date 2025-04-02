@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>zad1</title>
+</head>
+<body>
+    <button>GET</button>
+    <br />
+    <form method="post">
+        <input type="text" name="p1" />
+        <a href="#">POST</a>
+    </form>
+    <script>
+        const anchor = document.querySelector("a");
+        const form = document.querySelector("form");
+        const button = document.querySelector("button");
+
+        button.addEventListener("click", (e) => {
+            window.location.href = "https://google.com/";
+        });
+
+        anchor.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            form.submit();
+        })
+    </script>
+</body>
+</html>

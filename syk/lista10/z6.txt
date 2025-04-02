@@ -1,0 +1,28 @@
+dostęp do pamięci głównej = 70ns
+dostęp do pamięci L1 = 0.66ns
+dostęp do pamięci L2 = 5.62ns
+
+Współczynnik chybień L1 = 8%
+Współczynnik chybień L2 = 0.5%
+
+Dostępy do pamięci - 36% instrukcji
+Długość cyklu - 0.66ns
+
+średni czas dostępu tylko z L1:
+szukana wartość jest w L1:
+0.92*0.66ns
+else:
+0.08*70.66ns (dostęp do pamięci głównej + czas L1)
+
+0.92*0.66ns + 0.08*70.66ns = 6.26ns
+
+średni czas dostępu z L1 i L2:
+w 99,5% przypadków nasza wartość będzie w L2
+
+0.92*0.66ns + 0.08 * (0.995*5.62ns + 0.005*(70+5.62+0.66)) = 1.14ns
+
+CPI = 1
+CPI z L1:
+0.36*6.26/0.66 + 0.64*1 = 4.05
+CPI z L1 i L2:
+0.36*1.14/0.66 + 0.64*1 = 1.26

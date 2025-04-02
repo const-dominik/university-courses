@@ -1,0 +1,18 @@
+pamięć podręczna z mapowaniem bezpośrednim adresowana bajtowo
+to taka pamięć podręczna, gdzie E=1, zatem adresowanie jest bezpośrednie
+spod jednego adresu pamięć cache przechowuje 1 blok danych
+
+(tag, index, offset)
+tag = 22 bity
+index = 5 bitow
+offset = 5 bitow
+
+a)
+rozmiar bloku = 2^offset = 32
+b)
+liczba wierszy = 2^index = 32
+c)
+bity składujące dane = 32 * 8
+metadane = tag + valid = 22 + 1
+
+32*8/(22+1) = 11.1304347826

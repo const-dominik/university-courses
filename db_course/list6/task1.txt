@@ -1,0 +1,56 @@
+Table appointments {
+  id integer [primary key]
+  patient_id integer
+  physician_id integer
+  date date
+  time time
+  procedure_id integer
+}
+
+Table patients {
+  id integer [primary key]
+  name string
+  surname string
+  address string
+  postal_code string
+  city string
+}
+
+Table physicians {
+  id integer [primary key]
+  name string
+  surname string
+  room_number integer
+  //assuming that each physician takes appointment
+  //in their room and it doesn't change
+}
+
+Table procedures {
+  id integer [primary key]
+  type string // dental
+  cause string // denture fitting
+  price integer
+}
+
+Ref: appointments.patient_id < patients.id // many-to-one
+Ref: appointments.physician_id < physicians.id
+Ref: appointments.procedure_id < procedures.id
+Table appointments {
+  id integer [primary key]
+  //client
+  name string
+  surname string
+  address string
+  postal_code string
+  city string
+  //physician
+  ph_name string
+  ph_surname string
+  room_number integer
+  //procedure
+  type string // dental
+  cause string // denture fitting
+  price integer
+  date date
+  time time
+}

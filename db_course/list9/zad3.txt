@@ -1,0 +1,60 @@
+Entities:
+
+Product:
+Properties: ID, Name, Price, Image, Category, Manufacturer, Status
+Lifecycle:
+- Obsolete (product that is no longer sold or needs an update)
+- Synced (product is buyable)
+
+
+User:
+Properties: ID, Username, Email, Password, Role User
+Lifecycle:
+- unverified
+- verified
+
+Admin:
+Properties: ID, Username, Email, Password, Role Admin
+
+Order:
+Properties: ID, User, Products, Total Price, Status
+Lifecycle:
+- Order Created
+- Order Completed
+- Order Paid
+
+Value Objects:
+Image: URL, Alt text
+Category: Name
+Manufacturer: Name
+Role: User or Admin
+
+
+Aggregates:
+
+Product:
+Entities: Product
+Transactions:
+    Add New Product
+    Edit Existing Product
+    Delete Product
+    Add to Cart
+
+Order:
+Entities: Order, User
+Transactions:
+    Create Order
+    Complete Order
+    Pay Order
+
+User:
+Entities: User
+Transactions:
+    Register User
+    Update User Information
+
+Admin:
+Entities: Admin
+Transactions:
+    Register Admin
+    Authorize To Add or Delete Product

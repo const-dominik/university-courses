@@ -1,0 +1,18 @@
+Zbiór roboczy procesu (working set) - zbiór stron pamięci wirtualnej aktywnie wykorzystywanych przez proces
+
+czterodrożne TLB z 64 wpisami => 16 setów, po 4 wpisy na set
+przestrzeń adresowa 2^48
+
+1. wielkość strony 4KiB
+
+optymistycznie będziemy wykorzystywać cały potencjał TLB, zatem 64 wpisy.
+64*4 = 256KiB
+
+pesymistycznie będziemy wykorzystywać tylko 1 set - jest to przypadek pesymistyczny, bo będziemy mieć dużo conflict missów
+4 * 4 = 16 KiB
+
+2. tak samo, tylko zmieniamy literkę K na M - optymistycznie 256 MiB, pesymistycznie 16 MiB
+
+![](https://i.imgur.com/ukx1Xsi.png)
+
+W każdym wypadku wielkość zbioru roboczego jest mniejsza od przestrzeni adresowej - 256 MiB < 2^48B

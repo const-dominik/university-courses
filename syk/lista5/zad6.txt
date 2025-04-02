@@ -1,0 +1,22 @@
+1. while (b) {…}
+
+loop: if !b goto next
+     // set of instructions
+    goto loop
+next: //continuation
+
+2. for (i = 0; i < n; i++) {…}
+
+i := 0
+for: if i >= n goto next
+    // set of instructions
+    i := i+1
+    goto for
+next: ...
+
+3. 𝑑𝑜 {...} 𝑤ℎ𝑖𝑙𝑒 (𝑏)
+
+do: ...
+    ...
+    ...
+    if b goto do

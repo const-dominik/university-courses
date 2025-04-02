@@ -1,0 +1,34 @@
+rozmiar pamięci 32 KB
+rozmiar bloku 8 B
+mapowanie bezpośrednie
+write-back write-allocate
+
+sizeof(char) = 1
+sizeof(int) = 4
+sizeof(pixel) = 4
+
+for (j = 639; j >= 0; j--) {
+    for (i = 479; i >= 0; i--) {
+        buffer[i][j].r = 0;
+        buffer[i][j].g = 0;
+        buffer[i][j].b = 0;
+        buffer[i][j].a = 0;
+    }
+}
+
+tag, index, offset
+offset = 3
+index = 32768/8 = 4096 = 2^12 => 12
+tag reszta
+
+https://i.imgur.com/TTVwvNU.png
+
+U nas przechodzimy przez kolumny: buffer[479][639], buffer[478][639] itd., mamy zatem:
+miss rate = 1, ale jeden pixel to 4 dostępy, zatem dzielimy miss rate przez 4,
+1 access - miss, ładujemy do cache, kolejne 3 to hity
+
+zatem mamy miss rate 25%
+
+Wystarczy zamienić pętle miejscami, żebyśmy wykorzystywali spatial locality: wtedy wykonujemy dostępy do następujących po sobie elementów,
+np. buffer[479][639], buffer[479][638] - te pixele są obok siebie w pamięci, zatem po załadowaniu bloku buffer[479][639], wykonując dostęp do buffer[479][638], ten będzie już w cache
+mamy zatem miss rate = sizeof(pixel)/B = 1/2 i jak wyżej dzielimy przez 4, co daje nam miss rate 12.5%.

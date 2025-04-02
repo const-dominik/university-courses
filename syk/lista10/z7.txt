@@ -1,0 +1,20 @@
+mamy dodatkowe 5 bitów
+pamięć czterodrożna, więc set ma 4 bloki
+
+2 pierwsze bity - numer najstarszego bloku
+2 kolejne - numer drugiego najstarszego
+ostatni bit - czy najmłodszy blok znajduje się wcześniej w kolejności niż drugi najmłodszy?
+
+kandydat do usunięcia to oczywiście blok, którego numer zapisany jest na 2 pierwszych bitach
+
+aktualizacje:
+na początku:
+1 2 3 4
+
+- po odczycie najmłodszego bloku nie musimy zmieniać nic
+- po odczycie drugiego najmłodszego wystarczy zanegować piąty bit
+1 2 4 3
+- po odczycie drugiego najstarszego: pierwsze dwa bity pozostają takie same, pozycję prawie najmłodszego zapisujemy na pozycji drugiego najstarszego, porównujemy pozycję starego najmłodszego i nowego najmłodszego i odpowiednio zapisujemy na 5 bicie
+1 3 4 2
+- po odczycie najstarszego bloku: drugi najstarszy staje się najstarszym, drugi najmłodszy staje się drugim najstarszym, porównujemy pozycje najstarszego z najmłodszym i zapisujemy na 5 bicie
+2 3 4 1

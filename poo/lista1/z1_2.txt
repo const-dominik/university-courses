@@ -1,0 +1,78 @@
+https://przetargi.uj.edu.pl/documents/1378124/143234079/Aplikacja-zalacznik-Zadanie+6+-+Opis+przedmiotu+-+2019-07-30.pdf/2e0f9901-d123-41c3-90da-583320474ff0
+
+F:
+1. Informacje o UJ i Krakowie, istotne z punktu widzenia studenta, przy czym informacje wyświetlane przez
+aplikację mogą zależeć od cech użytkownika jako studenta (kierunek studiów, rok itp.). - jakie informacje? S
+2. Funkcje mobilnego USOS-a (po zalogowaniu). S R
+3. Terminarz zintegrowany z USOS-em i z portalem UJ. S R
+
+U:
+1. Aplikacja będzie działać w dwóch wersjach językowych: polskiej i angielskiej SMR
+2. Nawigacja w aplikacji powinna być intuicyjna oraz ergonomiczna, zapewniać łatwy dostęp do poszukiwanej
+treści, stanowić przejrzysty i zrozumiały system komunikacji. R S
+
+R:
+1. Aplikacja będzie zapewniać wysoki standard bezpieczeństwa danych, w tym uwierzytelnienie użytkownika
+za pomocą mechanizmów logowania UJ S R
+2. Wsparcie techniczne udzielane będzie w następującym reżimie czasowym:
+Priorytet Opis usterki Czas reakcji Czas obsługi
+wysoki dotyka wszystkich lub znaczącą grupę użytkowników – brak
+możliwości pracy
+niezwłocznie 8 godzin
+normalny specyficzne dla użytkownika lub wąskiej grupy osób –
+praca jest możliwa, ale uciążliwa
+1 dzień 3 dni
+niski specyficzne dla danego użytkownika – praca jest możliwa,
+ale występują drobne niedogodności
+3 dni 10 dni M T
+
+P:
+1. Aplikacja mobilna powinna pobierać dane z serwera i przechowywać je przez okres 30 dni, zapewniając
+szybki do nich dostęp przy powtórnym dostępie, również w trybie offline M S
+
+S:
+1. konfiguracja serwerów i komponentów S R 
+
+
+
+
+
+
+
+
+== 2 ==
+
+Problem: Rezerwacja biletu kolejowego online. 
+Opis skrócony:
+Klient chce zarezerwować bilet kolejowy online. Przechodzi na stronę internetową przewoźnika, wybiera datę podróży, trasę, 
+oraz preferowany rodzaj miejsca. Następnie dokonuje płatności, a po poprawnej transakcji otrzymuje potwierdzenie rezerwacji.
+
+Opis pełny:
+Nazwa: Rezerwacja biletu kolejowego online
+Twórca: Przewoźnik
+Typ przypadku zastosowania: Ogólny
+Aktorzy: Klient, System rezerwacyjny, System płatności online
+Warunki wstępne: Klient musi mieć internet oraz aktualną kartę płatniczą
+Warunki końcowe: Poprawnie zarezerwowany bilet kolejowy, otrzymane potwierdzenie rezerwacji
+
+Główny scenariusz sukcesu:
+
+1. Klient wchodzi na stronę internetową przewoźnika
+2. Wybiera datę podróży, trasę, i rodzaj miejsc
+3. System rezerwacyjny prezentuje dostępność miejsc
+4. Klient wybiera preferowane miejsce
+5. Podaje dane osobowe, informacje kontaktowe i dane płatnicze
+6. Wybiera dostępne zniżki
+7. System płatności przetwarza transakcję
+8. Klient otrzymuje potwierdzenie rezerwacji, zawierające numer rezerwacji i szczegóły podróży
+
+Alternatywne przepływy zdarzeń:
+2a. W przypadku braku dostępnych miejsc na wybranym połączeniu, system rezerwacyjny sugeruje inne terminy podróży lub trasy, lub informuje o braku miejsc siedzących
+7b. W przypadku niepowodzenia transakcji płatniczej, klient jest informowany o błędzie i proszony o ponowną próbę
+
+Dodatkowe wymagania:
+
+1. Strona internetowa musi być dostępna w dwóch językach: polskim i angielskim.
+2. System rezerwacyjny powinien umożliwiać wybór miejsc w wagonie.
+3. System płatności online musi obsługiwać popularne metody płatności.
+

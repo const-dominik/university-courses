@@ -1,0 +1,26 @@
+Weźmy np. 5 bitowe adresy:
+
+mapowanie bezpośrednie:
+2 bity index
+1 bit offset
+2 bity tag
+
+mapowanie 2-way
+1 bit na index
+1 bit na offset
+3 bity na tag
+
+dostępy: 00000, 00100, 01100, 00000
+
+bezpośrednie:
+00|00|0 comp
+00|10|0 comp
+01|10|0 conflict
+00|00|0 hit
+
+2-way:
+000|0|0 comp
+001|0|0 comp
+011|0|0 conflict
+000|0|0 conflict
+

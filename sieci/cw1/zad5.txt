@@ -1,0 +1,14 @@
+Wpisy w tablicy posortujemy po długości maski malejąco.
+
+Dowód:
+Oznaczenia:
+ip - dowolny adres IP
+f - pierwszy adres w posortowanej tablicy, do którego pasuje ip
+s - drugi adres w posortowanej tablicy, do którego pasuje ip
+n - długość maski f
+m - długość maski s
+
+Wiemy, że n >= m. Jeżeli n = m, to dopasowanie ip do f i s jest równie dobre.
+Jako że n > m, to dopasowane zostanie więcej bitów ip dla f niż dla s. 
+Zatem zgodnie z regułą najdłuższego pasującego prefiksu, najlepszym wyborem jest f.
+Więc wybór "pierwszego pasującego" (f) skutkuje wybraniem najdłuższego prefiksu, tym samym najlepszej reguły, ckd.

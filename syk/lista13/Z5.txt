@@ -1,0 +1,14 @@
+Dla uproszcznia załóżmy, że każda faza procesu bedzie trwała tylo co poprzednia.
+
+1) Dla $P > Q_{0}$ algorytm działa jak zwykłe Round Robin, podobnie dla $P = Q_{0}$.
+2) Dla $P = Q_{0}/2$ czas wykonakona procesu wzrośnie tylko o jedną zmianę konteksku.
+3) Dla $P < Q_{0}/2$, $Q_{1} = Q_{0} - P$ czyli $P < Q_{1}$ zatem algorytm będzie się wykonywał 
+jak zwykłe Round Robin
+4) Dla $Q_{0} > P > Q_{0}/2$ $Q_{1} = Q_{0} - P$ czyli $P > Q_{1}$ będziemy zatem do czasu wykonania procesu
+dodawać czas zmiany/zmian kontekstu, przy czym im P będzie bliżej do $Q_{0}$ tym $Q_{1}$ będzie mniejsze, a zatem 
+ilość zmian kontekstu też będzie większa (dla $P = 0.99Q_{0}$ będzie 100 zmian, dla $P = 0.999Q_{0}$ 1000).
+Dodatkowo przy każdej zmianie kontekstu, żeby proces wrócił do procesora Robin Robin musi przejść przez pozostałe
+procesy, zatem faktyczny czas wykonia procesy może wzrosnąć wielokrotnie.
+
+Podsumowują nowy algorytm ma wady, które mogą zwiększać czas wykonia procesu, a przyczym nie widać jak miałby poprawić
+jakieś miary efektywności (może responsywność ale nieznacznie)

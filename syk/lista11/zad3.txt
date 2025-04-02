@@ -1,0 +1,17 @@
+a) 0x027c = 1001111100
+
+https://i.imgur.com/aG3lL3K.png
+
+PPN = 17_16 = 10111_2 + offset =VPO
+
+b) 0x03a9 = 1110101001
+
+https://i.imgur.com/8i7u71O.png
+
+PPN = 11_16 = 10001_2 + offset=VPO
+
+c) 0x00040 = 1000000
+
+https://i.imgur.com/4bLUn8W.png
+
+miss

@@ -1,0 +1,14 @@
+
+Zasada działania Fair Share Scheduler:
+Użytkownicy są podzieleni na grupy, z których każda ma przydzielony określony udział czasu procesora.
+System przydziela czas procesora proporcjonalnie do każdej grupy, niezależnie od liczby procesów w grupach.
+Przykład:
+Jeśli mamy cztery grupy, każda z przydziałem 25% czasu procesora i grupy zawierają odpowiednio 1, 2, 3 i 4 procesy intensywnie korzystające z CPU, to bez Fair Share Scheduler każdy proces otrzymałby 10% czasu CPU (bo jest ich 10). Jednak z Fair Share Scheduler proces w grupie 1 otrzyma dwa razy więcej czasu CPU niż każdy proces w grupie 2, trzy razy więcej niż każdy proces w grupie 3, i cztery razy więcej niż każdy proces w grupie 4.
+
+Implementacja:
+Do wzoru obliczania priorytetu procesu dodaje się nowy składnik - "priorytet grupy fair share". Każdy proces ma nowe pole wskazujące na pole użycia CPU przez grupę fair share, wspólne dla wszystkich procesów w grupie. Obsługa przerwań zegara zwiększa pole użycia CPU grupy dla aktualnie działającego procesu, podobnie jak pole użycia CPU samego procesu, a wartości te są co sekundę redukowane.
+
+Przykład działania:
+Załóżmy, że mamy trzy procesy: A, B i C. Proces A należy do jednej grupy, a procesy B i C do innej. Jeśli najpierw uruchomiony zostanie proces A, jego pole użycia CPU i pole użycia grupy będą zwiększane przez następne sekundy. Po przeliczeniu priorytetów procesów po 1 sekundzie, procesy B i C będą miały najwyższy priorytet i załóżmy, że jądro uruchomi proces B. W następnej sekundzie pole użycia CPU procesu B oraz pole użycia grupy dla procesów B i C wzrośnie. W ten sposób, po przeliczeniu priorytetów po 2 sekundach, proces C będzie miał priorytet 75, a jądro uruchomi proces A z priorytetem 74. Wzorzec będzie się powtarzał: procesy będą uruchamiane w kolejności A, B, A, C, A, B itd.
+
+![](https://i.imgur.com/PmSLpzZ.png)

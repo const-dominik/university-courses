@@ -1,0 +1,23 @@
+![](https://i.imgur.com/6Cfeke5.png)
+
+Planowanie niewywłaszczające - planowanie w którym proces dostaje dostęp do procesora na tak długo, 
+jak długo nie zmieni swojego stanu na waiting lub terminated
+
+Planowanie wywłaszczjące - planowanie w którym procesor może zmienić stan procesu z "running" na "ready" oraz z "waiting" na "ready"
+
+Proces ograniczony przez dostęp do procesora - czas wykonania procesu zależy przedewszystkim od dostępu do procesora 
+(proces czeka tylko na dostęp)
+
+Proces ograniczony przez wejście-wyjście - czas wykonania procesu zależy od interakcji z urządzeniami I/O
+
+Proces interaktywny - proces który często wchodzi w interakcje z użytkownikiem. Proces powinien być z założenia 
+responsywny, przez co opóżnie w jego wykonaniu powinno być jak najniższe (wysoki priorytet)
+
+Proces wsadowy - proces z bardzo niską lub żadną interaktywnością z użytkownikiem. Priorytet (i opóźnienie) zależy
+od funkcji procesu
+
+Dlaczego?
+Planowanie wykorzystuje się by:
+- stworzyć iluzję jednoczesnego wykonywania wielu procesów
+- zmiejszyć średni czas oczekiwania procesu na wykonanie
+- poprawić responsywność
